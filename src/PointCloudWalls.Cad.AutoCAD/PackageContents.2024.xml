@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0" ProductType="Application" Name="PointCloudWalls CAD Bridge" AppVersion="1.0.0"
+                    Description="Receives walls published from Revit (PointCloudWalls) into the open drawing" Author="PointCloudWalls">
+  <CompanyDetails Name="PointCloudWalls" />
+  <Components>
+    <RuntimeRequirements OS="Win64" Platform="AutoCAD*" SeriesMin="R24.0" SeriesMax="R24.3" />
+    <ComponentEntry AppName="PCWCadBridge" Version="1.0.0" ModuleName="./Contents/PointCloudWalls.Cad.AutoCAD.dll"
+                    AppDescription="Listens for walls published from Revit" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="False">
+      <Commands GroupName="PCW">
+        <Command Local="PCWLISTEN" Global="PCWLISTEN" />
+        <Command Local="PCWSTOP" Global="PCWSTOP" />
+        <Command Local="PCWSTATUS" Global="PCWSTATUS" />
+        <Command Local="PCWCLEAR" Global="PCWCLEAR" />
+      </Commands>
+    </ComponentEntry>
+  </Components>
+</ApplicationPackage>

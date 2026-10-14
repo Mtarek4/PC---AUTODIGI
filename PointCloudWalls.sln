@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{12F1AEA6-39E8-46B7-8112-33CDAF3063B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointCloudWalls.Core", "src\PointCloudWalls.Core\PointCloudWalls.Core.csproj", "{E1EE980D-D5E1-492E-9A51-589DB9FCC62A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointCloudWalls.Revit", "src\PointCloudWalls.Revit\PointCloudWalls.Revit.csproj", "{79E25F55-DED8-4A4B-B24D-452AE50B13EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{66EF63F5-BBF5-49A1-A75A-82B3A750098D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointCloudWalls.Tests", "tests\PointCloudWalls.Tests\PointCloudWalls.Tests.csproj", "{A9540670-9FCE-4354-ADA9-30A1E353F270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointCloudWalls.Cad.Protocol", "src\PointCloudWalls.Cad.Protocol\PointCloudWalls.Cad.Protocol.csproj", "{45520087-6DA6-4DD0-8638-179324B76E6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointCloudWalls.Cad.AutoCAD", "src\PointCloudWalls.Cad.AutoCAD\PointCloudWalls.Cad.AutoCAD.csproj", "{477E1486-DAF0-4C34-B016-1278A3FD0BA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1EE980D-D5E1-492E-9A51-589DB9FCC62A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1EE980D-D5E1-492E-9A51-589DB9FCC62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1EE980D-D5E1-492E-9A51-589DB9FCC62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1EE980D-D5E1-492E-9A51-589DB9FCC62A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E25F55-DED8-4A4B-B24D-452AE50B13EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E25F55-DED8-4A4B-B24D-452AE50B13EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E25F55-DED8-4A4B-B24D-452AE50B13EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E25F55-DED8-4A4B-B24D-452AE50B13EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9540670-9FCE-4354-ADA9-30A1E353F270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9540670-9FCE-4354-ADA9-30A1E353F270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9540670-9FCE-4354-ADA9-30A1E353F270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9540670-9FCE-4354-ADA9-30A1E353F270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45520087-6DA6-4DD0-8638-179324B76E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45520087-6DA6-4DD0-8638-179324B76E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45520087-6DA6-4DD0-8638-179324B76E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45520087-6DA6-4DD0-8638-179324B76E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477E1486-DAF0-4C34-B016-1278A3FD0BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477E1486-DAF0-4C34-B016-1278A3FD0BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477E1486-DAF0-4C34-B016-1278A3FD0BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477E1486-DAF0-4C34-B016-1278A3FD0BA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1EE980D-D5E1-492E-9A51-589DB9FCC62A} = {12F1AEA6-39E8-46B7-8112-33CDAF3063B0}
+		{79E25F55-DED8-4A4B-B24D-452AE50B13EA} = {12F1AEA6-39E8-46B7-8112-33CDAF3063B0}
+		{A9540670-9FCE-4354-ADA9-30A1E353F270} = {66EF63F5-BBF5-49A1-A75A-82B3A750098D}
+		{45520087-6DA6-4DD0-8638-179324B76E6C} = {12F1AEA6-39E8-46B7-8112-33CDAF3063B0}
+		{477E1486-DAF0-4C34-B016-1278A3FD0BA3} = {12F1AEA6-39E8-46B7-8112-33CDAF3063B0}
+	EndGlobalSection
+EndGlobal

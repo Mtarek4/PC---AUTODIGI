@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Which AutoCAD are you building for?
+         2025 (default)  -> .NET 8   (AutoCAD 2025 and 2026 run on .NET 8)
+         2024            -> .NET Framework 4.8
+         To build for 2024:  right-click the project > Build with  /p:AcadYear=2024   (or change the line below). -->
+    <AcadYear Condition="'$(AcadYear)' == ''">2025</AcadYear>
+    <!-- Change if AutoCAD is installed elsewhere -->
+    <AcadPath>C:\Program Files\Autodesk\AutoCAD $(AcadYear)</AcadPath>
+    <BundleFolder>$(APPDATA)\Autodesk\ApplicationPlugins\PointCloudWalls.CadBridge.bundle</BundleFolder>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(AcadYear)' == '2024'">
+    <TargetFramework>net48</TargetFramework>
+    <PackageContentsFile>PackageContents.2024.xml</PackageContentsFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AcadYear)' != '2024'">
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <PackageContentsFile>PackageContents.2025.xml</PackageContentsFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>PointCloudWalls.Cad.AutoCAD</AssemblyName>
+    <RootNamespace>PointCloudWalls.Cad.AutoCAD</RootNamespace>
+  </PropertyGroup>
+
+  <!-- AutoCAD's DLLs are Windows Forms / WPF assemblies: without these two lines you get WindowsBase / System.Drawing / VisualBasic version-conflict warnings on .NET 8 -->
+  <PropertyGroup Condition="'$(AcadYear)' != '2024'">
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="AcCoreMgd"><HintPath>$(AcadPath)\AcCoreMgd.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="AcDbMgd"><HintPath>$(AcadPath)\AcDbMgd.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="AcMgd"><HintPath>$(AcadPath)\AcMgd.dll</HintPath><Private>false</Private></Reference>
+    <ProjectReference Include="..\PointCloudWalls.Cad.Protocol\PointCloudWalls.Cad.Protocol.csproj" />
+  </ItemGroup>
+
+  <!-- After every build: install as an AutoCAD "bundle" so it loads automatically at AutoCAD startup.
+       Close AutoCAD before building (it locks the DLL). -->
+  <Target Name="DeployBundle" AfterTargets="Build">
+    <ItemGroup>
+      <BundleDll Include="$(OutDir)PointCloudWalls.Cad.AutoCAD.dll;$(OutDir)PointCloudWalls.Cad.Protocol.dll" />
+    </ItemGroup>
+    <MakeDir Directories="$(BundleFolder)\Contents" />
+    <Copy SourceFiles="@(BundleDll)" DestinationFolder="$(BundleFolder)\Contents" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageContentsFile)" DestinationFiles="$(BundleFolder)\PackageContents.xml" />
+    <Message Importance="high" Text="Installed AutoCAD $(AcadYear) bundle ($(TargetFramework)) to $(BundleFolder)" />
+  </Target>
+</Project>

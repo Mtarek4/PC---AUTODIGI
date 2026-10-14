@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <!-- One application entry: it creates the XD ribbon tab, and every tool is a button on it. -->
+  <AddIn Type="Application">
+    <Name>XD Ribbon</Name>
+    <Assembly>PointCloudWalls\PointCloudWalls.Revit.dll</Assembly>
+    <AddInId>d9ac7f23-cdd9-4f7c-aea5-37e54bfed324</AddInId>
+    <FullClassName>PointCloudWalls.Revit.XdApp</FullClassName>
+    <VendorId>PCW</VendorId>
+    <VendorDescription>XD - point cloud wall digitization and CAD connector (prototype)</VendorDescription>
+  </AddIn>
+</RevitAddIns>

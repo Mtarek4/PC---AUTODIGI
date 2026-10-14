@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PointCloudWalls.Core\PointCloudWalls.Core.csproj" />
+    <ProjectReference Include="..\..\src\PointCloudWalls.Cad.Protocol\PointCloudWalls.Cad.Protocol.csproj" />
+  </ItemGroup>
+</Project>

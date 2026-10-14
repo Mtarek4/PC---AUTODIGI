@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>PointCloudWalls.Revit</AssemblyName>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>PointCloudWalls.Revit</RootNamespace>
+    <!-- Change if Revit 2024 is installed elsewhere -->
+    <RevitPath>C:\Program Files\Autodesk\Revit 2024</RevitPath>
+    <AddinFolder>$(APPDATA)\Autodesk\Revit\Addins\2024</AddinFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>$(RevitPath)\RevitAPI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>$(RevitPath)\RevitAPIUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <ProjectReference Include="..\PointCloudWalls.Core\PointCloudWalls.Core.csproj" />
+    <ProjectReference Include="..\PointCloudWalls.Cad.Protocol\PointCloudWalls.Cad.Protocol.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="PointCloudWalls.addin" CopyToOutputDirectory="PreserveNewest" />
+    <!-- ribbon icons, embedded in the DLL -->
+    <EmbeddedResource Include="Icons\*.png">
+      <LogicalName>PCW.Icons.%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- After every build: copy DLLs + .addin into the Revit 2024 add-ins folder (close Revit before building: it locks the DLL) -->
+  <Target Name="DeployToRevit" AfterTargets="Build">
+    <ItemGroup>
+      <DeployDll Include="$(OutDir)PointCloudWalls.Revit.dll;$(OutDir)PointCloudWalls.Core.dll;$(OutDir)PointCloudWalls.Cad.Protocol.dll" />
+    </ItemGroup>
+    <MakeDir Directories="$(AddinFolder)\PointCloudWalls" />
+    <Copy SourceFiles="@(DeployDll)" DestinationFolder="$(AddinFolder)\PointCloudWalls" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\PointCloudWalls.addin" DestinationFolder="$(AddinFolder)" />
+    <Message Importance="high" Text="Deployed to $(AddinFolder)" />
+  </Target>
+</Project>

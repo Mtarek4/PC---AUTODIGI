@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- netstandard2.0: loads in Revit 2024 (net48), AutoCAD 2024 (net48) and newer .NET hosts -->
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <RootNamespace>PointCloudWalls.Cad</RootNamespace>
+  </PropertyGroup>
+</Project>

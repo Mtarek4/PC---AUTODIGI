@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- netstandard2.0 => usable from Revit 2024 (net48) AND Revit 2025+ (net8.0-windows) -->
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <RootNamespace>PointCloudWalls.Core</RootNamespace>
+  </PropertyGroup>
+</Project>
